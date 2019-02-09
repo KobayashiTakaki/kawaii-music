@@ -13,3 +13,21 @@
  *= require_tree .
  *= require_self
  */
+
+body::after {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  content: "";
+  background: -moz-linear-gradient(top, #CCCCFF 0%,#FF99CC 100%);/*古いFireFox向け*/
+  background: -webkit-linear-gradient(top, #CCCCFF 0%,#FF99CC 100%);/*古いSafari・Chrome向け*/
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#CCCCFF', endColorstr='#FF99CC',GradientType=0 );/*IE9以下への対応*/
+  background: linear-gradient(to bottom, #CCCCFF 0%, #FF99CC 100%);/*正規のプロパティ*/
+  z-index: -1;
+}
+
+.wrapper {
+  margin: 20px;
+}
