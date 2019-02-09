@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  root 'base#show'
+  root 'base#index'
 end
