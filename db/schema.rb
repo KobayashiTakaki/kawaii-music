@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_09_143909) do
+ActiveRecord::Schema.define(version: 2019_02_09_152306) do
 
   create_table "articles", force: :cascade do |t|
     t.text "comment"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2019_02_09_143909) do
 
   create_table "tracks", force: :cascade do |t|
     t.string "sc_id"
-    t.string "sc_path"
+    t.string "url"
     t.string "artist"
     t.string "title"
     t.datetime "created_at", null: false
