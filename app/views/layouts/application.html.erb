@@ -11,6 +11,9 @@
 
   <body>
     <div class="wrapper">
+      <% if logged_in?%>
+        <%= link_to 'logout', admin_logout_path, method: :delete%>
+      <% end %>
       <%= yield %>
     </div>
   </body>

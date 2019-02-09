@@ -14,11 +14,18 @@ class Admin::SessionsController < ApplicationController
   end
 
   def destroy
+    log_out
   end
 
   private
   def log_in(user)
     session[:user_id] = user.id
+  end
+
+  def log_out
+    session[:user_id] = nil
+    @current_user = nil
+    redirect_to root_url
   end
 
 end
