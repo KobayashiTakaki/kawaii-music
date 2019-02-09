@@ -7,7 +7,7 @@ class Admin::SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       log_in(user)
-      redirect_to admin_index_path
+      redirect_to admin_root_path
     else
       redirect_to root_url
     end
