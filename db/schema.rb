@@ -10,12 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_09_142817) do
+ActiveRecord::Schema.define(version: 2019_02_09_143909) do
 
   create_table "articles", force: :cascade do |t|
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "track_id"
+    t.index ["track_id"], name: "index_articles_on_track_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -34,10 +36,10 @@ ActiveRecord::Schema.define(version: 2019_02_09_142817) do
   end
 
   create_table "tracks_genres", id: false, force: :cascade do |t|
-    t.integer "tracks_id"
-    t.integer "genres_id"
-    t.index ["genres_id"], name: "index_tracks_genres_on_genres_id"
-    t.index ["tracks_id"], name: "index_tracks_genres_on_tracks_id"
+    t.integer "track_id"
+    t.integer "genre_id"
+    t.index ["genre_id"], name: "index_tracks_genres_on_genre_id"
+    t.index ["track_id"], name: "index_tracks_genres_on_track_id"
   end
 
   create_table "users", force: :cascade do |t|
