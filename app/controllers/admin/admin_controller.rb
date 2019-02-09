@@ -1,22 +1,8 @@
 class Admin::AdminController < ApplicationController
+  before_action :logged_in_user
+
   def index
-    unless logged_in?
-      redirect_to root_url
-    else
-      render 'admin/admin/index'
-    end
-  end
-
-
-  private
-  def current_user
-    if session[:user_id]
-      @current_user ||= User.find_by(id: session[:user_id])
-    end
-  end
-
-  def logged_in?
-    !current_user.nil?
+    render 'admin/admin/index'
   end
 
 end
