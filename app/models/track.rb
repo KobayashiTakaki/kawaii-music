@@ -37,4 +37,17 @@ class Track < ApplicationRecord
     self.genres.delete(genre)
   end
 
+  def add_tag(name)
+    Tag.create(name: name) unless Tag.find_by(name: name)
+    tag = Tag.find_by(name: name)
+    unless self.tags.include?(tag)
+      self.tags << tag
+    end
+  end
+
+  def delete_tag(id)
+    tag = Tag.find(id)
+    self.tags.delete(tag)
+  end
+
 end

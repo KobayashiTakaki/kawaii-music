@@ -10,6 +10,12 @@
       <% end %>
     </p>
     <p>
+      tags:
+      <% track.tags.each do |tag| %>
+        <%= link_to tag.name, admin_tag_path(tag) %>
+      <% end %>
+    </p>
+    <p>
       description: <%= track.description %>
     </p>
   </div>
