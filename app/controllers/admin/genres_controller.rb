@@ -6,7 +6,7 @@ class Admin::GenresController < ApplicationController
   end
 
   def show
-    @genre = Genre.find(params[:id])
+    @genre = Genre.includes(:tracks).find(params[:id])
   end
 
   def create

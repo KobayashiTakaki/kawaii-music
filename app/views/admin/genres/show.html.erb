@@ -1,1 +1,10 @@
-<h1>Genre *<%= @genre.name %>*</h1>
+<%= link_to "genres", admin_genres_path %>
+<h1>Genre <%= @genre.name %></h1>
+<h3>Tracks</h3>
+<ul>
+  <% @genre.tracks.each do |track| %>
+    <li>
+      <%= link_to "#{track.artist} - #{track.title}", edit_admin_track_path(track.sc_id) %>
+    </li>
+  <% end %>
+</ul>
