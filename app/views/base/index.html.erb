@@ -3,7 +3,7 @@
   <div id="home-feed">
   </div>
 </div>
-<%= form_with(model: Track.new, url: tracks_path, id: "get-tracks", method: :get) do |f| %>
+<%= form_with(url: tracks_path, id: "get-tracks", method: :get) do |f| %>
 <% end %>
 <script>
   window.addEventListener('load', function(){
