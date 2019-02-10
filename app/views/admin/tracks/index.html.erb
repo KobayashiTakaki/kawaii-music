@@ -5,11 +5,5 @@
   <%= submit_tag "import" %>
 <% end %>
 <div class="tracks-list">
-  <ul>
-    <% @tracks.each do |track| %>
-      <li>
-        <%= link_to "#{track.artist} - #{track.title}", edit_admin_track_path(track.sc_id) %>
-      </li>
-    <% end %>
-  </ul>
+  <%= render partial: 'admin/tracks/track_card', collection: @tracks, as: "track" %>
 </div>

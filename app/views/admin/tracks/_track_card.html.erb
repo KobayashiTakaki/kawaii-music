@@ -1,0 +1,16 @@
+<div class="track-card">
+  <h4>
+    <%= link_to "#{track.artist} - #{track.title}", edit_admin_track_path(track.sc_id) %>
+  </h4>
+  <div class="track-info">
+    <p>
+      genres:
+      <% track.genres.each do |genre| %>
+        <%= link_to genre.name, admin_genre_path(genre) %>
+      <% end %>
+    </p>
+    <p>
+      description: <%= track.description %>
+    </p>
+  </div>
+</div>
