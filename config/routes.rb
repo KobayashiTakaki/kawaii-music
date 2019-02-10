@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'genres/index'
+    get 'genres/show'
+  end
   root 'base#index'
 
   namespace :admin do
@@ -10,6 +14,7 @@ Rails.application.routes.draw do
     resources :tracks, only: [:index, :edit, :update] do
       collection {post :import}
     end
+    resources :genres, only: [:index, :show]
 
   end
 end
