@@ -26,6 +26,13 @@ ActiveRecord::Schema.define(version: 2019_02_09_152306) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "genres_tracks", id: false, force: :cascade do |t|
+    t.integer "track_id"
+    t.integer "genre_id"
+    t.index ["genre_id"], name: "index_genres_tracks_on_genre_id"
+    t.index ["track_id"], name: "index_genres_tracks_on_track_id"
+  end
+
   create_table "tracks", force: :cascade do |t|
     t.string "sc_id"
     t.string "url"
@@ -33,13 +40,6 @@ ActiveRecord::Schema.define(version: 2019_02_09_152306) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "tracks_genres", id: false, force: :cascade do |t|
-    t.integer "track_id"
-    t.integer "genre_id"
-    t.index ["genre_id"], name: "index_tracks_genres_on_genre_id"
-    t.index ["track_id"], name: "index_tracks_genres_on_track_id"
   end
 
   create_table "users", force: :cascade do |t|
