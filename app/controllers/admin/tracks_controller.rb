@@ -5,10 +5,6 @@ class Admin::TracksController < ApplicationController
     @tracks = Track.all
   end
 
-  def new
-    @track = Track.new()
-  end
-
   def import
     Track.import(params[:file])
     redirect_to admin_tracks_path, notice: "tracks import done"
