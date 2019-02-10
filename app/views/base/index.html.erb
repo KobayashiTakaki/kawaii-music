@@ -1,44 +1,12 @@
 <div class="wrapper">
   <h1>Kawaii Dance Music Daisuki Ojisan's Playlist</h1>
-  <div class="feed">
-    <div class="article">
-      <div class="article-info">
-        <h3><a href="#">KATOMORI - TELLL [NEST HQ Premiere]</a></h3>
-        <a href="#">future bass</a>
-      </div>
-      <div class="player">
-        <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/300661501&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-      </div>
-      <div class="description">
-        <p>ああああああああああああああああ</p>
-        <p>いいいいいいいいいいいいいいいいいいいいいいいいいいいいいいい</p>
-      </div>
-    </div>
-    <div class="article">
-      <div class="article-info">
-        <h3><a href="#">Miiko - Team Salvato – Your Reality (ft. LilyPichu)[Miiko Remix](Short Ver.)</a></h3>
-        <a href="#">future bass</a>
-      </div>
-      <div class="player">
-        <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/545619819&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-      </div>
-      <div class="description">
-        <p>ああああああああああああああああ</p>
-        <p>いいいいいいいいいいいいいいいいいいいいいいいいいいいいいいい</p>
-      </div>
-    </div>
-    <div class="article">
-      <div class="article-info">
-        <h3><a href="#">HEX MANIA - Onnanoko - Stay</a></h3>
-        <a href="#">nxc</a>
-      </div>
-      <div class="player">
-        <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/265115796&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-      </div>
-      <div class="description">
-        <p>ああああああああああああああああ</p>
-        <p>いいいいいいいいいいいいいいいいいいいいいいいいいいいいいいい</p>
-      </div>
-    </div>
+  <div id="home-feed">
   </div>
 </div>
+<%= form_with(model: Track.new, url: tracks_path, id: "get-tracks", method: :get) do |f| %>
+<% end %>
+<script>
+  window.addEventListener('load', function(){
+    Rails.fire(document.getElementById("get-tracks"), 'submit')
+  })
+</script>
