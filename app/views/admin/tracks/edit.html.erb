@@ -1,17 +1,28 @@
+<%= link_to "tracks", admin_tracks_path %>
 <h1>Track Edit</h1>
 <h3><%= "#{@track.artist} - #{@track.title}" %></h3>
 <%= render 'shared/sc_embed', track: @track %>
 
-<% if @track.genres.present? %>
-  <% @track.genres.each do |genre| %>
-    <span class="genre">
-      <%= genre.name %>
-      <%= link_to "x", admin_track_genre_path(@track, genre), method: :delete %>
-    </span>
+<div class="editor-group">
+  <h4>Genres</h4>
+  <% if @track.genres.present? %>
+    <% @track.genres.each do |genre| %>
+      <span class="genre">
+        <%= genre.name %>
+        <%= link_to "x", admin_track_genre_path(@track, genre), method: :delete %>
+      </span>
+    <% end %>
   <% end %>
-<% end %>
+  <%= form_for :genres, url: admin_track_genres_path(@track) do |f| %>
+    <%= f.text_field :name %>
+    <%= f.submit "add genre"%>
+  <% end %>
+</div>
 
-<%= form_for :genres, url: admin_track_genres_path(@track.id) do |f| %>
-  <%= f.text_field :name %>
-  <%= f.submit "add genre"%>
-<% end %>
+<div class="editor-group">
+  <h4>Description</h4>
+  <%= form_for @track, url: admin_track_path(@track), method: :patch do |f| %>
+    <%= f.text_field :description, size: 100 %>
+    <%= f.submit "update description"%>
+  <% end %>
+</div>
