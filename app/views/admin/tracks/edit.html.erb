@@ -1,0 +1,16 @@
+<h1>Track Edit</h1>
+<h3><%= "#{@track.artist} - #{@track.title}" %></h3>
+<%= render 'shared/sc_embed', track: @track %>
+
+<% if @track.genres.present? %>
+  <% @track.genres.each do |genre| %>
+    <span class="genre"><%= genre.name %><%= link_to "x", "#" %></span>
+  <% end %>
+<% end %>
+
+<%= form_for @track, url: admin_track_path do |f| %>
+  <%= f.fields_for :genres, @track.genres.build do |g| %>
+    <%= g.text_field :name %>
+  <% end %>
+  <%= f.submit "add genre"%>
+<% end %>

@@ -7,7 +7,7 @@
   <ul>
     <% @tracks.each do |track| %>
       <li>
-        <%= link_to "#{track.artist} - #{track.title}", track.url %>
+        <%= link_to "#{track.artist} - #{track.title}", edit_admin_track_path(track.sc_id) %>
       </li>
     <% end %>
   </ul>
