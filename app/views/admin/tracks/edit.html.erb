@@ -8,8 +8,11 @@
   <% if @track.genres.present? %>
     <% @track.genres.each do |genre| %>
       <span class="genre">
-        <%= genre.name %>
-        <%= link_to "x", admin_track_genre_path(@track, genre), method: :delete %>
+        <%= link_to genre.name, admin_genre_path(genre.id) %>
+        <%=
+          link_to "x", admin_track_genre_path(@track, genre), method: :delete,
+          data: { confirm: "delete genre #{genre.name}?" }
+        %>
       </span>
     <% end %>
   <% end %>
