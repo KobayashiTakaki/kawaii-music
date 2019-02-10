@@ -11,6 +11,9 @@
   <body>
     <div class="wrapper">
       <% if logged_in? %>
+        <%= link_to "top", admin_root_path %>
+        <%= link_to "tracks", admin_tracks_path %>
+        <%= link_to "genres", admin_genres_path %>
         <%= link_to 'logout', admin_logout_path, method: :delete%>
       <% end %>
       <%= yield %>
