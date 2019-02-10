@@ -26,7 +26,7 @@ class Admin::TracksController < ApplicationController
   private
   def strong_params
     params.require(:track).permit(
-      genres_attributes: [:id, :name]
+      genres_attributes: [:id, :name, :_destroy]
     )
   end
 end

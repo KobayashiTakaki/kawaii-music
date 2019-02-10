@@ -1,6 +1,6 @@
 class Track < ApplicationRecord
   has_and_belongs_to_many :genres
-  accepts_nested_attributes_for :genres
+  accepts_nested_attributes_for :genres, allow_destroy: true
   validates :sc_id, presence: true
   validates :url, presence: true
   validates :artist, presence: true

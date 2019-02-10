@@ -4,7 +4,15 @@
 
 <% if @track.genres.present? %>
   <% @track.genres.each do |genre| %>
-    <span class="genre"><%= genre.name %><%= link_to "x", "#" %></span>
+    <span class="genre">
+      <%= form_for @track, url: admin_track_path do |f| %>
+        <%= f.fields_for :genres, genre do |g| %>
+          <%= g.hidden_field :_destroy, value: true %>
+        <% end %>
+        <%= genre.name %>
+        <%= f.submit "x"%>
+      <% end %>
+    </span>
   <% end %>
 <% end %>
 
