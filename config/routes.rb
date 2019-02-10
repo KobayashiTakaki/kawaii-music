@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     post 'login', to: 'sessions#create'
     delete 'logout', to: 'sessions#destroy'
     resources :articles, only: [:index]
-    resources :tracks, only: [:index, :edit, :update] do
+    resources :tracks, only: [:index, :edit, :update, :destroy] do
       resources :genres, only: [:create, :destroy]
       resources :tags, only: [:create, :destroy]
       collection {post :import}

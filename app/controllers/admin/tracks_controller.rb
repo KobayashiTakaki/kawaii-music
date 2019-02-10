@@ -18,6 +18,11 @@ class Admin::TracksController < ApplicationController
     end
   end
 
+  def destroy
+    Track.find(params[:id]).destroy
+    redirect_to admin_tracks_path
+  end
+
   def import
     Track.import(params[:file])
     redirect_to admin_tracks_path, notice: "tracks import done"
