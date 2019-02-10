@@ -10,6 +10,12 @@ class Admin::TracksController < ApplicationController
   end
 
   def update
+    @track = Track.find(params[:id])
+    if @track.update(strong_params)
+      redirect_to edit_admin_track_path(@track.sc_id)
+    else
+      render 'admin/tracks/edit'
+    end
   end
 
   def import
@@ -20,7 +26,7 @@ class Admin::TracksController < ApplicationController
   private
   def strong_params
     params.require(:track).permit(
-      genres_attributes: [:id, :name, :_destroy]
+      :description
     )
   end
 end
