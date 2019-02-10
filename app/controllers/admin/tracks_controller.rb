@@ -2,7 +2,7 @@ class Admin::TracksController < ApplicationController
   before_action :logged_in_user
 
   def index
-    @tracks = Track.all
+    @tracks = Track.includes(:genres).all
   end
 
   def edit
