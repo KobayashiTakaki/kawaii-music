@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     delete 'logout', to: 'sessions#destroy'
     resources :articles, only: [:index]
     resources :tracks, only: [:index, :edit, :update] do
+      resources :genres, only: [:create, :destroy]
       collection {post :import}
     end
     resources :genres, only: [:index, :show]

@@ -5,20 +5,13 @@
 <% if @track.genres.present? %>
   <% @track.genres.each do |genre| %>
     <span class="genre">
-      <%= form_for @track, url: admin_track_path do |f| %>
-        <%= f.fields_for :genres, genre do |g| %>
-          <%= g.hidden_field :_destroy, value: true %>
-        <% end %>
-        <%= genre.name %>
-        <%= f.submit "x"%>
-      <% end %>
+      <%= genre.name %>
+      <%= link_to "x", admin_track_genre_path(@track, genre), method: :delete %>
     </span>
   <% end %>
 <% end %>
 
-<%= form_for @track, url: admin_track_path do |f| %>
-  <%= f.fields_for :genres, @track.genres.build do |g| %>
-    <%= g.text_field :name %>
-  <% end %>
+<%= form_for :genres, url: admin_track_genres_path(@track.id) do |f| %>
+  <%= f.text_field :name %>
   <%= f.submit "add genre"%>
 <% end %>

@@ -10,12 +10,6 @@ class Admin::TracksController < ApplicationController
   end
 
   def update
-    @track = Track.find_by(sc_id: params[:id])
-    if @track.update(strong_params)
-      redirect_to edit_admin_track_path(@track.sc_id)
-    else
-      render 'admin/tracks/edit'
-    end
   end
 
   def import

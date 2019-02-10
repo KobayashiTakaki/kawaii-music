@@ -23,4 +23,18 @@ class Track < ApplicationRecord
   def self.updatable_attributes
     ["sc_id", "url", "artist", "title"]
   end
+
+  def add_genre(name)
+    Genre.create(name: name) unless Genre.find_by(name: name)
+    genre = Genre.find_by(name: name)
+    unless self.genres.include?(genre)
+      self.genres << genre
+    end
+  end
+
+  def delete_genre(id)
+    genre = Genre.find(id)
+    self.genres.delete(genre)
+  end
+
 end
