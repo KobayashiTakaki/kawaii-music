@@ -1,0 +1,21 @@
+<h1>Tracks New</h1>
+<%= form_tag import_admin_tracks_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "import" %>
+<% end %>
+
+<%= form_for @track, url: admin_tracks_path do |f| %>
+  <%= f.label :sc_id %>
+  <%= f.text_field :sc_id %>
+
+  <%= f.label :url %>
+  <%= f.text_field :url %>
+
+  <%= f.label :artist %>
+  <%= f.text_field :artist %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.submit "save" %>
+<% end %>
