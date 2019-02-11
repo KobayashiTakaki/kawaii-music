@@ -6,7 +6,9 @@ class Admin::GenresController < ApplicationController
   end
 
   def show
+    page = params[:page] || 1
     @genre = Genre.includes(:tracks).find(params[:id])
+    @tracks = @genre.tracks.page(page).per(25)
   end
 
   def create

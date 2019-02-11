@@ -1,3 +1,6 @@
 <h1>Genre <%= @genre.name %></h1>
 <h3>Tracks</h3>
-<%= render partial: 'admin/tracks/track_card', collection: @genre.tracks, as: "track" %>
+<div class="tracks-list">
+  <%= render partial: 'admin/tracks/track_card', collection: @tracks, as: "track" %>
+</div>
+<%= paginate @tracks %>

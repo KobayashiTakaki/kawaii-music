@@ -1,3 +1,6 @@
 <h1>Tag <%= @tag.name %></h1>
 <h3>Tracks</h3>
-<%= render partial: 'admin/tracks/track_card', collection: @tag.tracks, as: "track" %>
+<div class="tracks-list">
+  <%= render partial: 'admin/tracks/track_card', collection: @tracks, as: "track" %>
+</div>
+<%= paginate @tracks %>

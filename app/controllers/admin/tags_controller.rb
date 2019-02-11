@@ -6,7 +6,9 @@ class Admin::TagsController < ApplicationController
   end
 
   def show
+    page = params[:page] || 1
     @tag = Tag.includes(:tracks).find(params[:id])
+    @tracks = @tag.tracks.page(page).per(25)
   end
 
   def create

@@ -6,3 +6,4 @@
 <div class="tracks-list">
   <%= render partial: 'admin/tracks/track_card', collection: @tracks, as: "track" %>
 </div>
+<%= paginate @tracks %>

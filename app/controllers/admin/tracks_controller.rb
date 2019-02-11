@@ -2,7 +2,8 @@ class Admin::TracksController < ApplicationController
   before_action :logged_in_user
 
   def index
-    @tracks = Track.includes(:genres).includes(:tags).all
+    page = params[:page] || 1
+    @tracks = Track.page(page).per(25).includes(:genres).includes(:tags)
   end
 
   def edit
