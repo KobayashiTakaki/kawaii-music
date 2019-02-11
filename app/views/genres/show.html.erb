@@ -8,7 +8,6 @@
 </div>
 <%= form_with(url: tracks_path, id: "get-tracks", method: :get) do |f| %>
   <%= hidden_field :tracks, :page, value: 1 %>
-  <%= hidden_field :tracks, :total_pages, value: @total_pages %>
   <%= hidden_field :tracks, :model, value: "genre" %>
   <%= hidden_field :tracks, :model_id, value: @genre.id %>
 <% end %>

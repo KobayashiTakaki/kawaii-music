@@ -1,6 +1,5 @@
 var html = "<%= escape_javascript(render partial: 'tracks/article', collection: @tracks, as: 'track')%>";
 $("#articles").append($(html));
-console.log('tracs#index called')
 if(parseInt("<%= @total_pages %>") <= parseInt("<%= @page %>")){
   $("#show-more").remove();
 }
