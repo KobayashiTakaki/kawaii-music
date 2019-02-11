@@ -14,7 +14,7 @@
 <% end %>
 <script>
   var page = 1;
-  window.addEventListener('load', function(){
+  window.addEventListener('turbolinks:load', function(){
     Rails.fire($("#get-tracks")[0], 'submit')
   });
   $("#show-more").on('click', function(){
