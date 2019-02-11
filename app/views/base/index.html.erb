@@ -8,14 +8,3 @@
 <%= form_with(url: tracks_path, id: "get-tracks", method: :get) do |f| %>
   <%= hidden_field :tracks, :page, value: 1 %>
 <% end %>
-<script>
-  var page = 1;
-  window.addEventListener('turbolinks:load', function(){
-    Rails.fire($("#get-tracks")[0], 'submit')
-  });
-  $("#show-more").on('click', function(){
-    page += 1;
-    $("#tracks_page").val(page);
-    Rails.fire($("#get-tracks")[0], 'submit')
-  });
-</script>

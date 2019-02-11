@@ -1,3 +1,8 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+page = 1
+$(document).on 'turbolinks:load', () ->
+  Rails.fire($("#get-tracks")[0], 'submit')
+
+  $("#show-more").on 'click', () ->
+    page += 1
+    $("#tracks_page").val(page)
+    Rails.fire($("#get-tracks")[0], 'submit')
