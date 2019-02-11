@@ -1,2 +1,2 @@
 var html = "<%= escape_javascript(render partial: 'tracks/article', collection: @tracks, as: 'track')%>"
-document.getElementById("articles").innerHTML += html
+$("#articles").append($(html))

@@ -12,11 +12,11 @@
 <script>
   var page = 1;
   window.addEventListener('load', function(){
-    Rails.fire(document.getElementById("get-tracks"), 'submit')
+    Rails.fire($("#get-tracks")[0], 'submit')
   });
-  document.getElementById("show-more").addEventListener('click', function(){
+  $("#show-more").on('click', function(){
     page += 1;
-    document.getElementById("tracks_page").value = page;
-    Rails.fire(document.getElementById("get-tracks"), 'submit')
+    $("#tracks_page").value = page;
+    Rails.fire($("#get-tracks")[0], 'submit')
   });
 </script>
