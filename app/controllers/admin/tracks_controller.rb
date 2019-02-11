@@ -31,7 +31,7 @@ class Admin::TracksController < ApplicationController
   private
   def strong_params
     params.require(:track).permit(
-      :description
+      :description, :comment
     )
   end
 end

@@ -49,6 +49,14 @@
 </div>
 
 <div class="editor-group">
+  <h4>Comment</h4>
+  <%= form_for @track, url: admin_track_path(@track), method: :patch do |f| %>
+    <%= f.text_field :comment, size: 100 %>
+    <%= f.submit "update comment"%>
+  <% end %>
+</div>
+
+<div class="editor-group">
   <%= link_to "delete this track", admin_track_path(@track), method: :delete,
     data: { confirm: "delete this track?" }
   %>
