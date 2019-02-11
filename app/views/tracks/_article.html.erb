@@ -1,6 +1,10 @@
 <div class="article">
   <div class="article-info">
-    <h3><%= link_to "#{track.artist} - #{track.title}", "#" %></h3>
+    <h3>
+      <%= link_to "#{track.artist} - #{track.title}", track.url,
+        target: "_blank", rel: "noopener noreferrer"
+      %>
+    </h3>
     <% track.genres.each do |genre| %>
       <%= link_to genre.name, genre_path(genre) %>
     <% end %>
