@@ -16,7 +16,7 @@
   });
   $("#show-more").on('click', function(){
     page += 1;
-    $("#tracks_page").value = page;
+    $("#tracks_page").val(page);
     Rails.fire($("#get-tracks")[0], 'submit')
   });
 </script>
