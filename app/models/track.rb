@@ -7,6 +7,11 @@ class Track < ApplicationRecord
   validates :title, presence: true
   paginates_per 5
 
+  scope :random, -> (size) {
+     self.where(id: self.pluck(:id).shuffle[0..size-1])
+     .order("random()")
+  }
+
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
       # DBに存在すればnext
