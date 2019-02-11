@@ -1,5 +1,5 @@
-page = 1
 $(document).on 'turbolinks:load', () ->
+  page = 1
   Rails.fire($("#get-tracks")[0], 'submit')
 
   $("#show-more").on 'click', () ->
