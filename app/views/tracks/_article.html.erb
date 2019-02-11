@@ -2,7 +2,7 @@
   <div class="article-info">
     <h3><%= link_to "#{track.artist} - #{track.title}", "#" %></h3>
     <% track.genres.each do |genre| %>
-      <%= link_to genre.name, "#" %>
+      <%= link_to genre.name, genre_path(genre) %>
     <% end %>
   </div>
   <div class="player">

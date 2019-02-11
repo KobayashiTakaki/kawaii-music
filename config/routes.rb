@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'base#index'
 
   resources :tracks, only: [:index]
+  resources :genres, only: [:show]
   namespace :admin do
     root 'admin#index'
     get 'login', to: 'sessions#new'
