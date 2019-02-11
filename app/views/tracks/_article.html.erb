@@ -9,7 +9,11 @@
     <%= render 'shared/sc_embed', track: track %>
   </div>
   <div class="description">
-    <p><%= track.description %>です。</p>
-    <p><%= track.comment %></p>
+    <% if track.description.present? %>
+      <p><%= track.description %>です。</p>
+    <% end %>
+    <% if track.comment.present? %>
+      <p><%= track.comment %></p>
+    <% end %>
   </div>
 </div>

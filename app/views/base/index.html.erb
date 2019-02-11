@@ -2,7 +2,7 @@
 <div id="home-feed">
   <div id="articles">
   </div>
-  <div class="show-more">
+  <div id="show-more">
     <p>* show more *</p>
   </div>
 </div>
@@ -10,7 +10,13 @@
   <%= hidden_field :tracks, :page, value: 1 %>
 <% end %>
 <script>
+  var page = 1;
   window.addEventListener('load', function(){
     Rails.fire(document.getElementById("get-tracks"), 'submit')
-  })
+  });
+  document.getElementById("show-more").addEventListener('click', function(){
+    page += 1;
+    document.getElementById("tracks_page").value = page;
+    Rails.fire(document.getElementById("get-tracks"), 'submit')
+  });
 </script>

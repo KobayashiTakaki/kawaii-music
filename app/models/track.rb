@@ -5,7 +5,7 @@ class Track < ApplicationRecord
   validates :url, presence: true
   validates :artist, presence: true
   validates :title, presence: true
-  paginates_per 10
+  paginates_per 5
 
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
