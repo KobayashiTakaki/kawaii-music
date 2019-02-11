@@ -13,6 +13,30 @@
  *= require_tree .
  *= require_self
  */
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c:700,900');
+
+body {
+  color: #353035;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin: 8px;
+}
+
+h1.page-header {
+  color: #fafaf0;
+  font-weight: 900;
+}
+
+a {
+  color: #605560;
+  text-decoration: none;
+  font-size: 150%;
+}
+
+a:hover {
+  text-decoration: underline;
+}
 
 body::after {
   height: 100%;
@@ -34,4 +58,14 @@ body::after {
 
 p, h1, h2, h3, h4, h5, h6 {
   margin: 0;
+}
+
+@media screen and (max-width: 640px) {
+  .wrapper {
+    margin: 0;
+  }
+
+  a {
+    font-size: 100%;
+  }
 }
