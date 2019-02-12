@@ -30,6 +30,7 @@ a {
 h1.page-header a {
   color: #fafaf0;
   font-weight: 900;
+  text-shadow: 1.5px 1.5px 0 rgba(50,50,50,0.4);
 }
 
 body::after {
@@ -39,11 +40,28 @@ body::after {
   left: 0;
   top: 0;
   content: "";
-  background: -moz-linear-gradient(top, #CCCCFF 0%,#FF99CC 100%);/*古いFireFox向け*/
-  background: -webkit-linear-gradient(top, #CCCCFF 0%,#FF99CC 100%);/*古いSafari・Chrome向け*/
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#CCCCFF', endColorstr='#FF99CC',GradientType=0 );/*IE9以下への対応*/
-  background: linear-gradient(to bottom, #CCCCFF 0%, #FF99CC 100%);/*正規のプロパティ*/
+  background: linear-gradient(
+    #ffccff,
+    #ccccff,
+    #ccffff,
+    #ffccff,
+    #ffffcc,
+    #ccccff,
+    #ccffff,
+    #ccffcc,
+    #ffccff
+  );
+  background-size: 100% 900%;
   z-index: -1;
+  animation-name: background-anim;
+  animation-duration: 120s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes background-anim {
+  0% {background-position:0% 0%}
+  100% {background-position:0% 111.1%}
 }
 
 .wrapper {
