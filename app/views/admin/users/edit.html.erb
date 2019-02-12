@@ -1,0 +1,9 @@
+<h1>Change Password</h1>
+<h3>User: <%= current_user.email %></h3>
+<%= form_for current_user, url: admin_user_path(current_user), method: :patch do |f| %>
+  <%= f.label :password, "new password: " %>
+  <%= f.password_field :password %>
+  <%= f.label :password_confirmation, "password comfirmation: " %>
+  <%= f.password_field :password_confirmation %>
+  <%= f.submit "submit"%>
+<% end %>
