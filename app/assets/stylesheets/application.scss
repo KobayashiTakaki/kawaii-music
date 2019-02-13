@@ -46,12 +46,13 @@ body::after {
     #ccffff,
     #ffccff,
     #ffffcc,
-    #ccccff,
+    #ffcccc,
     #ccffff,
+    #ccccff,
     #ccffcc,
     #ffccff
   );
-  background-size: 100% 900%;
+  background-size: 100% 1000%;
   z-index: -1;
   animation-name: background-anim;
   animation-duration: 150s;
@@ -61,7 +62,7 @@ body::after {
 
 @keyframes background-anim {
   0% {background-position:0% 0%}
-  100% {background-position:0% 111.1%}
+  100% {background-position:0% 110%}
 }
 
 .wrapper {
