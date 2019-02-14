@@ -14,8 +14,8 @@ Rails.application.routes.draw do
       resources :tags, only: [:create, :destroy]
       collection {post :import}
     end
-    resources :genres, only: [:index, :show]
-    resources :tags, only: [:index, :show]
+    resources :genres, only: [:index, :show, :destroy]
+    resources :tags, only: [:index, :show, :destroy]
 
   end
 end

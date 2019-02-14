@@ -4,3 +4,8 @@
   <%= render partial: 'admin/tracks/track_card', collection: @tracks, as: "track" %>
 </div>
 <%= paginate @tracks %>
+<div class="editor-group">
+  <%= link_to "delete this genre", admin_genre_path(@genre), method: :delete,
+    data: { confirm: "delete genre #{@genre.name}?" }
+  %>
+</div>

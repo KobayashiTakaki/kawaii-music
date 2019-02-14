@@ -25,7 +25,8 @@ class Admin::TagsController < ApplicationController
 
   def destroy
     tag = Tag.find(params[:id])
-    if tag && params[:track_id]
+    redirect_to admin_tags_path unless tag
+    if params[:track_id]
       track = Track.find(params[:track_id])
       track.delete_tag(params[:id])
       if track.save
@@ -33,6 +34,9 @@ class Admin::TagsController < ApplicationController
       else
         render 'admin/tracks/edit'
       end
+    else
+      tag.destroy
+      redirect_to admin_tags_path
     end
   end
 

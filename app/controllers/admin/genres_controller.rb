@@ -25,7 +25,8 @@ class Admin::GenresController < ApplicationController
 
   def destroy
     genre = Genre.find(params[:id])
-    if genre && params[:track_id]
+    redirect_to admin_genres_path unless genre
+    if params[:track_id]
       track = Track.find(params[:track_id])
       track.delete_genre(params[:id])
       if track.save
@@ -33,6 +34,9 @@ class Admin::GenresController < ApplicationController
       else
         render 'admin/tracks/edit'
       end
+    else
+      genre.destroy
+      redirect_to admin_genres_path
     end
   end
 
