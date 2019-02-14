@@ -30,6 +30,34 @@ class Track < ApplicationRecord
     ["sc_id", "url", "artist", "title"]
   end
 
+  def self.tweet_tracks(theme, size)
+    tracks = []
+    if size > theme.not_tweeted_tracks.size
+      tracks += theme.not_tweeted_tracks
+      size_rest = size - theme.not_tweeted_tracks.size
+      tracks += theme.tweeted_tracks.ids.sample(size_rest)
+    else
+      tracks += theme.not_tweeted_tracks.sample(size)
+    end
+  end
+
+  def self.pick_theme
+    model = [Genre,Tag].sample
+    id = model.pluck(:id).sample
+    model.find(id)
+  end
+
+  def self.tweet_theme(least_tracks_size=3, max_retry=3)
+    theme = nil
+    retry_count = 0
+    # 一定数trackがあるテーマを選ぶ
+    while (theme.nil? or theme.tracks.size < least_tracks_size) \
+          and (retry_count < max_retry) do
+      theme = pick_theme
+    end
+    theme
+  end
+
   def add_genre(name)
     Genre.create(name: name) unless Genre.find_by(name: name)
     genre = Genre.find_by(name: name)
@@ -54,6 +82,11 @@ class Track < ApplicationRecord
   def delete_tag(id)
     tag = Tag.find(id)
     self.tags.delete(tag)
+  end
+
+  def tweeted?
+    return true if tweeted_at.present?
+    return false
   end
 
 end
