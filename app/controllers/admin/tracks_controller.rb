@@ -13,7 +13,10 @@ class Admin::TracksController < ApplicationController
   def update
     @track = Track.find(params[:id])
     if @track.update(strong_params)
-      redirect_to edit_admin_track_path(@track.sc_id)
+      respond_to do |format|
+        format.html { redirect_to edit_admin_track_path(@track.sc_id) }
+        format.js
+      end
     else
       render 'admin/tracks/edit'
     end

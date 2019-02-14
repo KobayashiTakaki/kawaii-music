@@ -13,10 +13,14 @@ class Admin::TagsController < ApplicationController
 
   def create
     if params[:track_id]
-      track = Track.find(params[:track_id])
-      track.add_tag(strong_params[:name])
-      if track.save
-        redirect_to edit_admin_track_path(track.sc_id)
+      @track = Track.find(params[:track_id])
+      @track.add_tag(strong_params[:name])
+      @tag = Tag.find_by(name: strong_params[:name])
+      if @track.save
+        respond_to do |format|
+          format.html { redirect_to edit_admin_track_path(@track.sc_id) }
+          format.js
+        end
       else
         render 'admin/tracks/edit'
       end
@@ -42,7 +46,7 @@ class Admin::TagsController < ApplicationController
 
   private
   def strong_params
-    params.require(:tags).permit(
+    params.require(:tag).permit(
       :name
     )
   end

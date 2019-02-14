@@ -1,0 +1,7 @@
+<span class="tag">
+  <%= link_to tag.name, admin_tag_path(tag.id) %>
+  <%=
+    link_to "x", admin_track_tag_path(track, tag), method: :delete,
+    data: { confirm: "delete tag #{tag.name}?" }
+  %>
+</span>

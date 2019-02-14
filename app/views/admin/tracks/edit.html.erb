@@ -4,18 +4,20 @@
 
 <div class="editor-group">
   <h4>Genres</h4>
-  <% if @track.genres.present? %>
-    <% @track.genres.each do |genre| %>
-      <span class="genre">
-        <%= link_to genre.name, admin_genre_path(genre.id) %>
-        <%=
-          link_to "x", admin_track_genre_path(@track, genre), method: :delete,
-          data: { confirm: "delete genre #{genre.name}?" }
-        %>
-      </span>
+  <div id="genres">
+    <% if @track.genres.present? %>
+      <% @track.genres.each do |genre| %>
+        <span class="genre">
+          <%= link_to genre.name, admin_genre_path(genre.id) %>
+          <%=
+            link_to "x", admin_track_genre_path(@track, genre), method: :delete,
+            data: { confirm: "delete genre #{genre.name}?" }
+          %>
+        </span>
+      <% end %>
     <% end %>
-  <% end %>
-  <%= form_for :genres, url: admin_track_genres_path(@track) do |f| %>
+  </div>
+  <%= form_with model: Genre.new, url: admin_track_genres_path(@track) do |f| %>
     <%= f.text_field :name %>
     <%= f.submit "add genre"%>
   <% end %>
@@ -23,18 +25,20 @@
 
 <div class="editor-group">
   <h4>Tags</h4>
-  <% if @track.tags.present? %>
-    <% @track.tags.each do |tag| %>
-      <span class="tag">
-        <%= link_to tag.name, admin_tag_path(tag.id) %>
-        <%=
-          link_to "x", admin_track_tag_path(@track, tag), method: :delete,
-          data: { confirm: "delete tag #{tag.name}?" }
-        %>
-      </span>
+  <div id="tags">
+    <% if @track.tags.present? %>
+      <% @track.tags.each do |tag| %>
+        <span class="tag">
+          <%= link_to tag.name, admin_tag_path(tag.id) %>
+          <%=
+            link_to "x", admin_track_tag_path(@track, tag), method: :delete,
+            data: { confirm: "delete tag #{tag.name}?" }
+          %>
+        </span>
+      <% end %>
     <% end %>
-  <% end %>
-  <%= form_for :tags, url: admin_track_tags_path(@track) do |f| %>
+  </div>
+  <%= form_with model: Tag.new, url: admin_track_tags_path(@track) do |f| %>
     <%= f.text_field :name %>
     <%= f.submit "add tag"%>
   <% end %>
@@ -42,7 +46,7 @@
 
 <div class="editor-group">
   <h4>Description</h4>
-  <%= form_for @track, url: admin_track_path(@track), method: :patch do |f| %>
+  <%= form_with model: @track, url: admin_track_path(@track), method: :patch do |f| %>
     <%= f.text_field :description, size: 100 %>
     <%= f.submit "update description"%>
   <% end %>
@@ -50,7 +54,7 @@
 
 <div class="editor-group">
   <h4>Comment</h4>
-  <%= form_for @track, url: admin_track_path(@track), method: :patch do |f| %>
+  <%= form_with model: @track, url: admin_track_path(@track), method: :patch do |f| %>
     <%= f.text_field :comment, size: 100 %>
     <%= f.submit "update comment"%>
   <% end %>
