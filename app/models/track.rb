@@ -56,6 +56,7 @@ class Track < ApplicationRecord
     while (theme.nil? or theme.tracks.size < least_tracks_size) \
           and (retry_count < max_retry) do
       theme = pick_theme
+      retry_count += 1
     end
     theme
   end
