@@ -35,7 +35,7 @@ class Track < ApplicationRecord
     if size > theme.not_tweeted_tracks.size
       tracks += theme.not_tweeted_tracks
       size_rest = size - theme.not_tweeted_tracks.size
-      tracks += theme.tweeted_tracks.ids.sample(size_rest)
+      tracks += theme.tweeted_tracks.sample(size_rest)
     else
       tracks += theme.not_tweeted_tracks.sample(size)
     end
