@@ -1,3 +1,6 @@
+<br />
+<%= link_to "all", admin_tracks_path %>
+<%= link_to "nodescription", admin_tracks_path(nodescription: "true") %>
 <h1>Tracks</h1>
 <%= form_tag import_admin_tracks_path, multipart: true do %>
   <%= file_field_tag :file %>

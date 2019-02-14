@@ -12,6 +12,8 @@ class Track < ApplicationRecord
      .order("random()")
   }
 
+  scope :undescribed, -> { where(description: [nil, '']) }
+
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
       # DBに存在すればnext

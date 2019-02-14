@@ -3,7 +3,12 @@ class Admin::TracksController < ApplicationController
 
   def index
     page = params[:page] || 1
-    @tracks = Track.page(page).per(25).includes(:genres).includes(:tags)
+    if params[:nodescription]
+      base = Track.undescribed
+    else
+      base = Track
+    end
+    @tracks = base.page(page).per(25).includes(:genres).includes(:tags)
   end
 
   def edit
