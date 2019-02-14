@@ -8,7 +8,7 @@ class Admin::TracksController < ApplicationController
     else
       base = Track
     end
-    @tracks = base.page(page).per(25).includes(:genres).includes(:tags)
+    @tracks = base.order(:updated_at).page(page).per(25).includes(:genres).includes(:tags)
   end
 
   def edit
