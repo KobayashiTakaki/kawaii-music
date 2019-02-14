@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_14_090225) do
+ActiveRecord::Schema.define(version: 2019_02_14_142134) do
 
   create_table "articles", force: :cascade do |t|
     t.text "comment"
@@ -56,6 +56,14 @@ ActiveRecord::Schema.define(version: 2019_02_14_090225) do
     t.text "description"
     t.text "comment"
     t.datetime "tweeted_at"
+  end
+
+  create_table "tweets", force: :cascade do |t|
+    t.text "content"
+    t.datetime "posted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "sequence"
   end
 
   create_table "users", force: :cascade do |t|
