@@ -42,6 +42,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
+  gem 'factory_bot_rails'
   gem 'capybara'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '~> 1.3.6'
