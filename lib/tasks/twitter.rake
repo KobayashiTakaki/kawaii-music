@@ -3,8 +3,7 @@ namespace :twitter do
   task tweet: :environment do
     tweet = Tweet.not_posted.order_by_seq.limit(1).first
     next if tweet.blank?
-    # twitter_client.update(tweet.contet)
-    puts tweet.content
+    twitter_client.update(tweet.contet)
     tweet.posted_at = Time.zone.now
     tweet.save!
   end
