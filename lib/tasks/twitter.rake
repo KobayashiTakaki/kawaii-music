@@ -3,9 +3,20 @@ namespace :twitter do
   task tweet: :environment do
     tweet = Tweet.not_posted.order_by_seq.limit(1).first
     next if tweet.blank?
-    twitter_client.update(tweet.content)
-    tweet.posted_at = Time.zone.now
-    tweet.save!
+    if tweet.sequence == 0
+      tweet_times = 2
+    else
+      tweet_times = 1
+    end
+
+    tweet_times.times.do
+      tweet = Tweet.not_posted.order_by_seq.limit(1).first
+      break if tweet.blank?
+      twitter_client.update(tweet.content)
+      tweet.posted_at = Time.zone.now
+      tweet.save!
+    end
+
   end
 
   task create: :environment do
