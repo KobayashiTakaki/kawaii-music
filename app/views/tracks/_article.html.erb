@@ -24,4 +24,7 @@
       <p><%= track.comment %></p>
     <% end %>
   </div>
+  <% if logged_in? %>
+    <%= link_to "edit", edit_admin_track_path(track.sc_id) %>
+  <% end %>
 </div>
