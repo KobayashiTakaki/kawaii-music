@@ -1,5 +1,5 @@
 $(document).on 'turbolinks:load', () ->
-  if window.location.pathname == '/'
+  if document.getElementById("get-tracks") != null
     page = 1
     Rails.fire($("#get-tracks")[0], 'submit')
 
