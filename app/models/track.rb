@@ -8,11 +8,16 @@ class Track < ApplicationRecord
   paginates_per 5
 
   scope :random, -> (size) {
-     self.where(id: self.pluck(:id).shuffle[0..size-1])
-     .order("random()")
+    self.where(id: self.pluck(:id).shuffle[0..size-1])
+        .order_random
   }
-
+  scope :order_random, -> { order("random()") }
   scope :undescribed, -> { where(description: [nil, '']) }
+  scope :by_genre_id, -> (genre_id) {
+    includes(:genres)
+    .references(:genres_tracks)
+    .where("genres_tracks.genre_id": genre_id)
+  }
 
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|

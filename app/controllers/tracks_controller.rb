@@ -3,8 +3,11 @@ class TracksController < ApplicationController
     @page = params[:tracks][:page] || 1
     if params[:tracks][:model]
       if params[:tracks][:model] == 'genre'
-        @tracks = Genre.find(params[:tracks][:model_id])
-          .tracks.page(@page).includes(:genres)
+        genre_id = valid_id(params[:tracks][:model_id])
+        @tracks = Track.by_genre_id(genre_id)
+                      .order_random
+                      .page(@page)
+                      .includes(:genres)
       end
     else
       @tracks = Track.random(30).page(@page).includes(:genres)
@@ -16,5 +19,11 @@ class TracksController < ApplicationController
       format.html { redirect_to root_url }
       format.js
     end
+  end
+
+  private
+  def valid_id(text)
+    return '' unless text.match(/\A[0-9]*\z/)
+    text
   end
 end
