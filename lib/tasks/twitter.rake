@@ -9,7 +9,7 @@ namespace :twitter do
       tweet_times = 1
     end
 
-    tweet_times.times.do
+    tweet_times.times do
       tweet = Tweet.not_posted.order_by_seq.limit(1).first
       break if tweet.blank?
       twitter_client.update(tweet.content)
