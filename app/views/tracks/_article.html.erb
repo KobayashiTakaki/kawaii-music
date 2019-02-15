@@ -5,9 +5,13 @@
         target: "_blank", rel: "noopener noreferrer"
       %>
     </h3>
-    <% track.genres.each do |genre| %>
-      <%= link_to genre.name, genre_path(genre) %>
-    <% end %>
+    <span class="genre-links">
+      <% track.genres.each do |genre| %>
+        <span class="genre-link">
+          <%= link_to genre.name, genre_path(genre) %>
+        </span>
+      <% end %>
+    </span>
   </div>
   <div class="player">
     <%= render 'shared/sc_embed', track: track %>

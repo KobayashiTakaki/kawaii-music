@@ -34,13 +34,17 @@
   max-width: 600px;
   padding: 14px;
   margin-top: 14px;
-  a {
+  .genre-links {
     color: #605560;
-    font-size: 120%;
+    font-size: 100%;
   }
 
   a:hover {
     text-decoration: underline;
+  }
+
+  .genre-link:not(:last-child)::after {
+    content: "/"
   }
 }
 
