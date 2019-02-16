@@ -11,7 +11,7 @@ class Track < ApplicationRecord
     self.where(id: self.pluck(:id).shuffle[0..size-1])
         .order_random
   }
-  scope :order_random, -> { order("random()") }
+  scope :order_random, -> { order(:random_order) }
   scope :undescribed, -> { where(description: [nil, '']) }
   scope :by_genre_id, -> (genre_id) {
     where(id: Genre.find(genre_id).tracks.ids)

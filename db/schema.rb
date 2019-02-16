@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_14_142134) do
+ActiveRecord::Schema.define(version: 2019_02_16_052219) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2019_02_14_142134) do
     t.text "description"
     t.text "comment"
     t.datetime "tweeted_at"
+    t.integer "random_order"
   end
 
   create_table "tweets", force: :cascade do |t|
