@@ -29,7 +29,7 @@ namespace :twitter do
 
   def track_tweet_contents
     theme = Track.tweet_theme
-    tracks = Track.tweet_tracks(theme, 3)
+    tracks = Track.tweet_tracks(theme, 4)
     contents = []
     contents << "こんばんは。本日は#{theme.name}特集です。"
     tracks.each do |track|
