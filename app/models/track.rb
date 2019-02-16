@@ -14,10 +14,9 @@ class Track < ApplicationRecord
   scope :order_random, -> { order("random()") }
   scope :undescribed, -> { where(description: [nil, '']) }
   scope :by_genre_id, -> (genre_id) {
-    includes(:genres)
-    .references(:genres_tracks)
-    .where("genres_tracks.genre_id": genre_id)
+    where(id: Genre.find(genre_id).tracks.ids)
   }
+  scope :include_genres, -> { includes(:genres) }
 
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|

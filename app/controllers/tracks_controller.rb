@@ -5,9 +5,9 @@ class TracksController < ApplicationController
       if params[:tracks][:model] == 'genre'
         genre_id = valid_id(params[:tracks][:model_id])
         @tracks = Track.by_genre_id(genre_id)
+                      .include_genres
                       .order_random
                       .page(@page)
-                      .includes(:genres)
       end
     else
       @tracks = Track.random(30).page(@page).includes(:genres)
