@@ -12,13 +12,8 @@
 
 ActiveRecord::Schema.define(version: 2019_02_14_142134) do
 
-  create_table "articles", force: :cascade do |t|
-    t.text "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "track_id"
-    t.index ["track_id"], name: "index_articles_on_track_id"
-  end
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
@@ -27,8 +22,8 @@ ActiveRecord::Schema.define(version: 2019_02_14_142134) do
   end
 
   create_table "genres_tracks", id: false, force: :cascade do |t|
-    t.integer "track_id"
-    t.integer "genre_id"
+    t.bigint "track_id"
+    t.bigint "genre_id"
     t.index ["genre_id"], name: "index_genres_tracks_on_genre_id"
     t.index ["track_id"], name: "index_genres_tracks_on_track_id"
   end
@@ -40,8 +35,8 @@ ActiveRecord::Schema.define(version: 2019_02_14_142134) do
   end
 
   create_table "tags_tracks", id: false, force: :cascade do |t|
-    t.integer "track_id"
-    t.integer "tag_id"
+    t.bigint "track_id"
+    t.bigint "tag_id"
     t.index ["tag_id"], name: "index_tags_tracks_on_tag_id"
     t.index ["track_id"], name: "index_tags_tracks_on_track_id"
   end
