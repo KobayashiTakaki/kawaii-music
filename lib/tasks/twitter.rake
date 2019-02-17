@@ -2,8 +2,11 @@ namespace :twitter do
   desc "post tweets"
   task tweet: :environment do
     tweet = Tweet.not_posted.order_by_seq.first
+    last_tweet = Tweet.not_posted.order_by_seq.last
     next if tweet.blank?
     if tweet.sequence == 0
+      tweet_times = 2
+    elsif tweet.sequence == last_tweet.sequence - 1
       tweet_times = 2
     else
       tweet_times = 1
@@ -40,6 +43,7 @@ namespace :twitter do
       content += "#{track.comment}" if track.comment.present?
       contents << content.strip
     end
+    contents << "本日は以上です。"
     contents
   end
 
