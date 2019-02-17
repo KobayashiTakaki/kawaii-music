@@ -1,7 +1,7 @@
 namespace :twitter do
   desc "post tweets"
   task tweet: :environment do
-    tweet = Tweet.not_posted.order_by_seq.limit(1).first
+    tweet = Tweet.not_posted.order_by_seq.first
     next if tweet.blank?
     if tweet.sequence == 0
       tweet_times = 2
@@ -10,7 +10,7 @@ namespace :twitter do
     end
 
     tweet_times.times do
-      tweet = Tweet.not_posted.order_by_seq.limit(1).first
+      tweet = Tweet.not_posted.order_by_seq.first
       break if tweet.blank?
       twitter_client.update(tweet.content)
       tweet.posted_at = Time.zone.now
