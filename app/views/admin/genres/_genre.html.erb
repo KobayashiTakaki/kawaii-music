@@ -1,7 +1,8 @@
-<span class="genre">
+<span id="<%= "genre-link-#{genre.id}" %>">
   <%= link_to genre.name, admin_genre_path(genre.id) %>
   <%=
     link_to "x", admin_track_genre_path(track, genre), method: :delete,
-    data: { confirm: "delete genre #{genre.name}?" }
+    data: { confirm: "delete genre #{genre.name}?" },
+    remote: true
   %>
 </span>

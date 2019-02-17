@@ -29,12 +29,15 @@ class Admin::GenresController < ApplicationController
 
   def destroy
     genre = Genre.find(params[:id])
-    redirect_to admin_genres_path unless genre
     if params[:track_id]
       track = Track.find(params[:track_id])
       track.delete_genre(params[:id])
+      @genre_id = params[:id]
       if track.save
-        redirect_to edit_admin_track_path(track.sc_id)
+        respond_to do |format|
+          format.html { redirect_to edit_admin_track_path(track.sc_id) }
+          format.js
+        end
       else
         render 'admin/tracks/edit'
       end

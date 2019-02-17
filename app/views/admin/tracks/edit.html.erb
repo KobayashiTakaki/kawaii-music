@@ -6,15 +6,11 @@
   <h4>Genres</h4>
   <div id="genre-links">
     <% if @track.genres.present? %>
-      <% @track.genres.each do |genre| %>
-        <span id="<%= "genre-link-#{genre.id}" %>">
-          <%= link_to genre.name, admin_genre_path(genre.id) %>
-          <%=
-            link_to "x", admin_track_genre_path(@track, genre), method: :delete,
-            data: { confirm: "delete genre #{genre.name}?" }
-          %>
-        </span>
-      <% end %>
+      <%=
+        render partial: 'admin/genres/genre',
+        collection: @track.genres, as: :genre,
+        locals: {track: @track}
+      %>
     <% end %>
   </div>
   <%= form_with model: Genre.new, url: admin_track_genres_path(@track) do |f| %>
@@ -27,15 +23,11 @@
   <h4>Categories</h4>
   <div id="category-links">
     <% if @track.categories.present? %>
-      <% @track.categories.each do |category| %>
-        <span id="<%= "category-link-#{category.id}" %>">
-          <%= link_to category.name, admin_category_path(category.id) %>
-          <%=
-            link_to "x", admin_track_category_path(@track, category), method: :delete,
-            data: { confirm: "delete category #{category.name}?" }
-          %>
-        </span>
-      <% end %>
+      <%=
+        render partial: 'admin/categories/category',
+        collection: @track.categories, as: :category,
+        locals: {track: @track}
+      %>
     <% end %>
   </div>
   <%= form_with model: Category.new, url: admin_track_categories_path(@track) do |f| %>
