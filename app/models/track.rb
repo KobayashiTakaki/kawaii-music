@@ -49,7 +49,11 @@ class Track < ApplicationRecord
 
   def self.pick_theme
     model = [Genre, Category].sample
-    id = model.pluck(:id).sample
+    weighted_ids = []
+    model.all.each do |record|
+      record.tracks.size.times { weighted_ids << record.id }
+    end
+    id = weighted_ids.sample
     model.find(id)
   end
 
