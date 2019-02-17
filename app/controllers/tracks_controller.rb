@@ -10,7 +10,7 @@ class TracksController < ApplicationController
                       .page(@page)
       end
     else
-      @tracks = Track.random(30).page(@page).includes(:genres)
+      @tracks = Track.random(30).include_genres.page(@page)
     end
 
     @total_pages = @tracks.total_pages
