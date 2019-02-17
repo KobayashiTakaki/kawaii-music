@@ -26,7 +26,6 @@ class Track < ApplicationRecord
       track = new
       # CSVからデータを取得し、設定する
       track.attributes = row.to_hash.slice(*updatable_attributes)
-      # 保存する
       track.save!
     end
   end
@@ -38,6 +37,7 @@ class Track < ApplicationRecord
 
   def self.tweet_tracks(theme, size)
     tracks = []
+    # not_tweetedのtrackを取得する
     if size > theme.not_tweeted_tracks.size
       tracks += theme.not_tweeted_tracks
       size_rest = size - theme.not_tweeted_tracks.size
@@ -49,6 +49,7 @@ class Track < ApplicationRecord
 
   def self.pick_theme
     model = [Genre, Category].sample
+    # 曲数に応じて選択される確率を変える
     weighted_ids = []
     model.all.each do |record|
       record.tracks.size.times { weighted_ids << record.id }
