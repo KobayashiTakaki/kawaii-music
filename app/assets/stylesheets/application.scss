@@ -34,7 +34,7 @@ h1.page-header a {
   text-shadow: 1.5px 1.5px 0 rgba(50,50,50,0.4);
 }
 
-body::after {
+body::before {
   height: 100%;
   width: 100%;
   position: fixed;
@@ -54,11 +54,23 @@ body::after {
     #ffccff
   );
   background-size: 100% 1000%;
-  z-index: -1;
+  z-index: -2;
   animation-name: background-anim;
   animation-duration: 150s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
+}
+
+body::after {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  content: "";
+  background: image-url("background-image.png");
+  background-position: top;
+  z-index: -1;
 }
 
 @keyframes background-anim {
