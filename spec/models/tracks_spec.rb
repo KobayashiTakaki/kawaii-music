@@ -1,7 +1,7 @@
 require "rails_helper"
 RSpec.describe "Tracks" do
   let(:genre_house) { create(:genre, name: "house") }
-  let(:tag_chill) { create(:tag, name: "Chill Out") }
+  let(:category_chill) { create(:category, name: "Chill Out") }
 
   context "no tweeted tracks in genre" do
     it "returns tracks in genre by tweet_tracks" do

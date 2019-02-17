@@ -1,6 +1,6 @@
 class Track < ApplicationRecord
   has_and_belongs_to_many :genres
-  has_and_belongs_to_many :tags
+  has_and_belongs_to_many :categories
   validates :sc_id, presence: true
   validates :url, presence: true
   validates :artist, presence: true
@@ -48,7 +48,7 @@ class Track < ApplicationRecord
   end
 
   def self.pick_theme
-    model = [Genre,Tag].sample
+    model = [Genre, Category].sample
     id = model.pluck(:id).sample
     model.find(id)
   end
@@ -78,17 +78,17 @@ class Track < ApplicationRecord
     self.genres.delete(genre)
   end
 
-  def add_tag(name)
-    Tag.create(name: name) unless Tag.find_by(name: name)
-    tag = Tag.find_by(name: name)
-    unless self.tags.include?(tag)
-      self.tags << tag
+  def add_category(name)
+    Category.create(name: name) unless Category.find_by(name: name)
+    category = Category.find_by(name: name)
+    unless self.categories.include?(category)
+      self.categories << category
     end
   end
 
-  def delete_tag(id)
-    tag = Tag.find(id)
-    self.tags.delete(tag)
+  def delete_category(id)
+    category = Category.find(id)
+    self.categories.delete(category)
   end
 
   def tweeted?

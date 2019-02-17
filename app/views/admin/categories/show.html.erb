@@ -1,11 +1,11 @@
-<h1>Tag <%= @tag.name %></h1>
+<h1>Category <%= @category.name %></h1>
 <h3>Tracks</h3>
 <div class="tracks-list">
   <%= render partial: 'admin/tracks/track_card', collection: @tracks, as: "track" %>
 </div>
 <%= paginate @tracks %>
 <div class="editor-group">
-  <%= link_to "delete this tag", admin_tag_path(@tag), method: :delete,
-    data: { confirm: "delete tag #{@tag.name}?" }
+  <%= link_to "delete this category", admin_category_path(@category), method: :delete,
+    data: { confirm: "delete category #{@category.name}?" }
   %>
 </div>

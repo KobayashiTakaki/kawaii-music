@@ -24,23 +24,23 @@
 </div>
 
 <div class="editor-group">
-  <h4>Tags</h4>
-  <div id="tags">
-    <% if @track.tags.present? %>
-      <% @track.tags.each do |tag| %>
-        <span class="tag">
-          <%= link_to tag.name, admin_tag_path(tag.id) %>
+  <h4>Categories</h4>
+  <div id="categories">
+    <% if @track.categories.present? %>
+      <% @track.categories.each do |category| %>
+        <span class="category">
+          <%= link_to category.name, admin_category_path(category.id) %>
           <%=
-            link_to "x", admin_track_tag_path(@track, tag), method: :delete,
-            data: { confirm: "delete tag #{tag.name}?" }
+            link_to "x", admin_track_category_path(@track, category), method: :delete,
+            data: { confirm: "delete category #{category.name}?" }
           %>
         </span>
       <% end %>
     <% end %>
   </div>
-  <%= form_with model: Tag.new, url: admin_track_tags_path(@track) do |f| %>
+  <%= form_with model: Category.new, url: admin_track_categories_path(@track) do |f| %>
     <%= f.text_field :name %>
-    <%= f.submit "add tag"%>
+    <%= f.submit "add category"%>
   <% end %>
 </div>
 

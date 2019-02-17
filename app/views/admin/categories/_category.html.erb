@@ -1,0 +1,7 @@
+<span class="category">
+  <%= link_to category.name, admin_category_path(category.id) %>
+  <%=
+    link_to "x", admin_track_category_path(track, category), method: :delete,
+    data: { confirm: "delete category #{category.name}?" }
+  %>
+</span>

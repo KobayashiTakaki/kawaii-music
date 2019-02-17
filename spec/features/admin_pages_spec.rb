@@ -12,9 +12,9 @@ RSpec.feature "admin pages" do
       expect(page).to have_current_path(root_path)
       visit admin_genre_path(1)
       expect(page).to have_current_path(root_path)
-      visit admin_tags_path
+      visit admin_categories_path
       expect(page).to have_current_path(root_path)
-      visit admin_tag_path(1)
+      visit admin_category_path(1)
       expect(page).to have_current_path(root_path)
     end
   end

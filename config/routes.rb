@@ -11,11 +11,11 @@ Rails.application.routes.draw do
     resources :users, only: [:edit, :update]
     resources :tracks, only: [:index, :edit, :update, :destroy] do
       resources :genres, only: [:create, :destroy]
-      resources :tags, only: [:create, :destroy]
+      resources :categories, only: [:create, :destroy]
       collection {post :import}
     end
     resources :genres, only: [:index, :show, :destroy]
-    resources :tags, only: [:index, :show, :destroy]
+    resources :categories, only: [:index, :show, :destroy]
 
   end
 end
