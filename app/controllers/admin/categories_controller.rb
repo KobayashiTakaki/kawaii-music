@@ -2,7 +2,7 @@ class Admin::CategoriesController < ApplicationController
   before_action :logged_in_user
 
   def index
-    @categories = Category.all
+    @categories = Category.all.order(:name)
   end
 
   def show

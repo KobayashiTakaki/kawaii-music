@@ -2,7 +2,7 @@ class Admin::GenresController < ApplicationController
   before_action :logged_in_user
 
   def index
-    @genres = Genre.all
+    @genres = Genre.all.order(:name)
   end
 
   def show
