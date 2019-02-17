@@ -4,10 +4,10 @@
 
 <div class="editor-group">
   <h4>Genres</h4>
-  <div id="genres">
+  <div id="genre-links">
     <% if @track.genres.present? %>
       <% @track.genres.each do |genre| %>
-        <span class="genre">
+        <span id="<%= "genre-link-#{genre.id}" %>">
           <%= link_to genre.name, admin_genre_path(genre.id) %>
           <%=
             link_to "x", admin_track_genre_path(@track, genre), method: :delete,
@@ -25,10 +25,10 @@
 
 <div class="editor-group">
   <h4>Categories</h4>
-  <div id="categories">
+  <div id="category-links">
     <% if @track.categories.present? %>
       <% @track.categories.each do |category| %>
-        <span class="category">
+        <span id="<%= "category-link-#{category.id}" %>">
           <%= link_to category.name, admin_category_path(category.id) %>
           <%=
             link_to "x", admin_track_category_path(@track, category), method: :delete,
