@@ -4,7 +4,7 @@ class Admin::TracksController < ApplicationController
   def index
     page = params[:page] || 1
     @tracks = query_base.includes(:genres, :categories)
-                        .order(:updated_at).page(page).per(25)
+                        .sort_by_newest.page(page).per(25)
   end
 
   def edit

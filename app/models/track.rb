@@ -12,6 +12,7 @@ class Track < ApplicationRecord
         .order_random
   }
   scope :order_random, -> { order(:random_order) }
+  scope :sort_by_newest, -> { order(created_at: :desc) }
   scope :undescribed, -> { where(description: [nil, '']) }
   scope :nogenre, -> { includes(:genres).where(genres: {id: nil}) }
   scope :nocategory, -> { includes(:categories).where(categories: {id: nil}) }
