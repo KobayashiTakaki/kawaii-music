@@ -3,12 +3,8 @@ class Admin::TracksController < ApplicationController
 
   def index
     page = params[:page] || 1
-    if params[:nodescription]
-      base = Track.undescribed
-    else
-      base = Track
-    end
-    @tracks = base.order(:updated_at).page(page).per(25).includes(:genres).includes(:categories)
+    @tracks = query_base.includes(:genres, :categories)
+                        .order(:updated_at).page(page).per(25)
   end
 
   def edit
@@ -42,5 +38,13 @@ class Admin::TracksController < ApplicationController
     params.require(:track).permit(
       :description, :comment
     )
+  end
+
+  def query_base
+    base = Track
+    base = base.undescribed if params[:nodescription]
+    base = base.nogenre if params[:nogenre]
+    base = base.nocategory if params[:nocategory]
+    base
   end
 end
