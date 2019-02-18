@@ -41,7 +41,9 @@ body::before {
   left: 0;
   top: 0;
   content: "";
-  background: linear-gradient(
+  background:
+  image-url("background-image.png"),
+  linear-gradient(
     #ffccff,
     #ccccff,
     #ccffff,
@@ -53,29 +55,18 @@ body::before {
     #ccffcc,
     #ffccff
   );
-  background-size: 100% 1000%;
-  z-index: -2;
+  background-size: auto, 100% 1000%;
+  background-position: top, auto;
+  z-index: -1;
   animation-name: background-anim;
   animation-duration: 150s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
 
-body::after {
-  height: 100%;
-  width: 100%;
-  position: fixed;
-  left: 0;
-  top: 0;
-  content: "";
-  background: image-url("background-image.png");
-  background-position: top;
-  z-index: -1;
-}
-
 @keyframes background-anim {
-  0% {background-position:0% 0%}
-  100% {background-position:0% 110%}
+  0% {background-position:0% 0%, 0% 0%}
+  100% {background-position:0% 0%, 0% 110%}
 }
 
 .wrapper {
