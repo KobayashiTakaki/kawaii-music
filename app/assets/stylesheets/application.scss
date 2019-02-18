@@ -42,21 +42,20 @@ body::before {
   top: 0;
   content: "";
   background:
-  image-url("background-image.png"),
-  linear-gradient(
-    #ffccff,
-    #ccccff,
-    #ccffff,
-    #ffccff,
-    #ffffcc,
-    #ffcccc,
-    #ccffff,
-    #ccccff,
-    #ccffcc,
-    #ffccff
-  );
+    image-url("background-image.png"),
+    linear-gradient(
+      #ffccff,
+      #ccccff,
+      #ccffff,
+      #ffccff,
+      #ffffcc,
+      #ffcccc,
+      #ccffff,
+      #ccccff,
+      #ccffcc,
+      #ffccff
+    );
   background-size: auto, 100% 1000%;
-  background-position: top, auto;
   z-index: -1;
   animation-name: background-anim;
   animation-duration: 150s;
@@ -65,8 +64,8 @@ body::before {
 }
 
 @keyframes background-anim {
-  0% {background-position:0% 0%, 0% 0%}
-  100% {background-position:0% 0%, 0% 110%}
+  0% {background-position: 30% 0%, 0% 0%}
+  100% {background-position: 30% 0%, 0% 110%}
 }
 
 .wrapper {
