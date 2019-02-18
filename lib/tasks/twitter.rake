@@ -42,6 +42,8 @@ namespace :twitter do
       content += "#{track.description}です。\n" if track.description.present?
       content += "#{track.comment}" if track.comment.present?
       contents << content.strip
+      track.tweeted_at = Time.zone.now
+      track.save!
     end
     contents << "本日は以上です。"
     contents
