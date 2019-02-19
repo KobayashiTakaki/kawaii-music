@@ -69,8 +69,8 @@ kaminariによるページネーションを実装しました。
 その中から1つレコードを選択するよう実装しました。  
 テーマを選択するキーとなるidを選択する処理では、  
 テーマに所属するTrack数が多いほど確率が高くなるようにしました。  
-(Tracks#pick_theme 参照)
+(Track#pick_theme 参照)
 
 #### 曲の選択
 Twitter投稿されていない曲が先に選択されるように実装しました。  
-(Tracks#tweet_tracks 参照)
+(Track#tweet_tracks 参照)
