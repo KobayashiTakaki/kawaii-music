@@ -5,8 +5,11 @@ Ruby on Railsで作成した、SoundCloud上の曲を紹介するサイトです
 私はカワイイダンスミュージックが大好きなので、  
 Kawaii Dance Music Daisuki Ojisan's Playlist と名付けました。  
 https://kawaii-music.herokuapp.com/  
-Twitter投稿機能があり、Botとしても運用しています。  
+Twitter投稿機能を実装し、Botとしても運用しています。  
 [@kawaii_dance](https://twitter.com/kawaii_dance)
+
+## 製作期間
+リリースまで約1週間で作成しました。
 
 ## 機能
 ### ユーザー向け画面
