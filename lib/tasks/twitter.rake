@@ -18,6 +18,7 @@ namespace :twitter do
       twitter_client.update(tweet.content)
       tweet.posted_at = Time.zone.now
       tweet.save!
+      sleep(10)
     end
 
   end
