@@ -15,7 +15,7 @@ namespace :twitter do
     tweet_times.times do
       tweet = Tweet.not_posted.order_by_seq.first
       break if tweet.blank?
-      twitter_client.update(tweet.content)
+      post_tweet(tweet.content)
       tweet.posted_at = Time.zone.now
       tweet.save!
       sleep(10)
@@ -58,5 +58,9 @@ namespace :twitter do
       config.access_token_secret = ENV['TWITTER_ATS']
     end
     client
+  end
+
+  def post_tweet(content)
+    twitter_client.update(content)
   end
 end
