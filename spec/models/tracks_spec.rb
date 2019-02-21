@@ -1,7 +1,7 @@
 require "rails_helper"
 RSpec.describe "Tracks" do
   let(:genre_house) { create(:genre, name: "house") }
-  let(:genre_future_bass) { Genre.create(name: "future bass") }
+  let(:genre_future_bass) { create(:genre, name: "future bass") }
   let(:category_chill) { create(:category, name: "chill") }
   let(:category_japanese) { create(:category, name: "japanese") }
 
