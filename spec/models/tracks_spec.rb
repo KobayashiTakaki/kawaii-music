@@ -1,7 +1,9 @@
 require "rails_helper"
 RSpec.describe "Tracks" do
   let(:genre_house) { create(:genre, name: "house") }
-  let(:category_chill) { create(:category, name: "Chill Out") }
+  let(:genre_future_bass) { Genre.create(name: "future bass") }
+  let(:category_chill) { create(:category, name: "chill") }
+  let(:category_fast) { create(:category, name: "fast") }
 
   context "no tweeted tracks in genre" do
     it "returns tracks in genre by tweet_tracks" do
@@ -40,5 +42,51 @@ RSpec.describe "Tracks" do
         expect(tweeted_tracks).to include(track)
       end
     end
+  end
+
+  it "pick up theme wheighted by track size" do
+    # genre house tracks
+    1.times do |i|
+      create(:track,
+        genres: [genre_house],
+        categories: []
+      )
+    end
+
+    # genre future bass tracks
+    10.times do |i|
+      create(:track,
+        genres: [genre_future_bass],
+        categories: []
+      )
+    end
+
+    # category chill tracks
+    1.times do |i|
+      create(:track,
+        genres: [],
+        categories: [category_chill]
+      )
+    end
+
+    # category fast tracks
+    10.times do |i|
+      create(:track,
+        genres: [],
+        categories: [category_fast]
+      )
+    end
+
+    count_result = {}
+    100.times do
+      theme = Track.pick_theme
+      if count_result[theme.name]
+        count_result[theme.name] += 1
+      else
+        count_result[theme.name] = 1
+      end
+    end
+    expect(count_result["future bass"]).to be > count_result["house"]
+    expect(count_result["fast"]).to be > count_result["chill"]
   end
 end
