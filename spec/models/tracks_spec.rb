@@ -3,7 +3,7 @@ RSpec.describe "Tracks" do
   let(:genre_house) { create(:genre, name: "house") }
   let(:genre_future_bass) { Genre.create(name: "future bass") }
   let(:category_chill) { create(:category, name: "chill") }
-  let(:category_fast) { create(:category, name: "fast") }
+  let(:category_japanese) { create(:category, name: "japanese") }
 
   context "no tweeted tracks in genre" do
     it "returns tracks in genre by tweet_tracks" do
@@ -45,7 +45,7 @@ RSpec.describe "Tracks" do
   end
 
   it "pick up theme wheighted by track size" do
-    # genre house tracks
+    # house tracks
     1.times do |i|
       create(:track,
         genres: [genre_house],
@@ -53,7 +53,15 @@ RSpec.describe "Tracks" do
       )
     end
 
-    # genre future bass tracks
+    # chill house tracks
+    1.times do |i|
+      create(:track,
+        genres: [genre_house],
+        categories: [category_chill]
+      )
+    end
+
+    # future bass tracks
     10.times do |i|
       create(:track,
         genres: [genre_future_bass],
@@ -61,19 +69,11 @@ RSpec.describe "Tracks" do
       )
     end
 
-    # category chill tracks
-    1.times do |i|
-      create(:track,
-        genres: [],
-        categories: [category_chill]
-      )
-    end
-
-    # category fast tracks
+    # japanese future bass tracks
     10.times do |i|
       create(:track,
-        genres: [],
-        categories: [category_fast]
+        genres: [genre_future_bass],
+        categories: [category_japanese]
       )
     end
 
@@ -87,6 +87,6 @@ RSpec.describe "Tracks" do
       end
     end
     expect(count_result["future bass"]).to be > count_result["house"]
-    expect(count_result["fast"]).to be > count_result["chill"]
+    expect(count_result["japanese"]).to be > count_result["chill"]
   end
 end
