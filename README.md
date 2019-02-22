@@ -23,7 +23,7 @@ Twitter投稿機能を実装し、Botとしても運用しています。
 - csv取り込み
 
 取り込みcsv作成用のスクレイピングツールも作りました。  
-(extract-track-info-sc)[https://github.com/KobayashiTakaki/extract-track-info-sc]
+[extract-track-info-sc](https://github.com/KobayashiTakaki/extract-track-info-sc)
 
 ### Twitter投稿
 - rake taskによる実行
