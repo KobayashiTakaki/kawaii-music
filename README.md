@@ -22,6 +22,9 @@ Twitter投稿機能を実装し、Botとしても運用しています。
 - ジャンル、カテゴリー設定
 - csv取り込み
 
+取り込みcsv作成用のスクレイピングツールも作りました。  
+(extract-track-info-sc)[https://github.com/KobayashiTakaki/extract-track-info-sc]
+
 ### Twitter投稿
 - rake taskによる実行
 - ジャンル、カテゴリーからランダムに1つテーマを選び、その中の曲を投稿
