@@ -44,7 +44,7 @@ RSpec.describe "Tracks" do
     end
   end
 
-  it "pick up theme wheighted by track size" do
+  it "picks up theme wheighted by track size" do
     # house tracks
     1.times do |i|
       create(:track,
