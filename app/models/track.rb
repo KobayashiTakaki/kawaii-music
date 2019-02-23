@@ -54,8 +54,16 @@ class Track < ApplicationRecord
     model = [Genre, Category].sample
     # 曲数に応じて選択される確率を変える
     weighted_ids = []
+    # 未tweetのtrack数に応じて選択される確率を変える
     model.all.each do |record|
       record.not_tweeted_tracks.size.times { weighted_ids << record.id }
+    end
+    # 全部tweet済だったら
+    if weighted_ids.empty?
+      model.all.each do |record|
+        # 所属する曲数に応じて選択される確率を変える
+        record.tracks.size.times { weighted_ids << record.id }
+      end
     end
     id = weighted_ids.sample
     model.find(id)

@@ -44,7 +44,7 @@ RSpec.describe "Tracks" do
     end
   end
 
-  it "pick up theme wheighted by track size" do
+  it "picks up theme wheighted by track size" do
     # house tracks
     1.times do |i|
       create(:track,
@@ -86,7 +86,60 @@ RSpec.describe "Tracks" do
         count_result[theme.name] = 1
       end
     end
+
     expect(count_result["future bass"]).to be > count_result["house"]
     expect(count_result["japanese"]).to be > count_result["chill"]
+  end
+
+  it "picks up theme wheighted by untweeted track size" do
+    # house tracks
+    1.times do |i|
+      create(:track,
+        genres: [genre_house],
+        categories: []
+      )
+    end
+
+    # chill house tracks
+    1.times do |i|
+      create(:track,
+        genres: [genre_house],
+        categories: [category_chill]
+      )
+    end
+
+    # future bass tracks
+    10.times do |i|
+      create(:track,
+        genres: [genre_future_bass],
+        categories: []
+      )
+    end
+
+    # japanese future bass tracks
+    10.times do |i|
+      create(:track,
+        genres: [genre_future_bass],
+        categories: [category_japanese]
+      )
+    end
+
+    # futute bassの曲をtweetし尽くした
+    Track.by_genre_id(genre_future_bass.id).each do |t|
+      t.tweeted_at = Time.zone.now
+      t.save!
+    end
+
+    count_result = {}
+    # future bassの曲を選ばない
+    10.times do
+      theme = Track.pick_theme
+      if count_result[theme.name]
+        count_result[theme.name] += 1
+      else
+        count_result[theme.name] = 1
+      end
+    end
+    expect(count_result["future bass"]).to be nil
   end
 end
