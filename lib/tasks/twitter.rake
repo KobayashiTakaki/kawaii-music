@@ -42,6 +42,7 @@ namespace :twitter do
       content += "#{track.url}\n"
       content += "#{track.description}です。\n" if track.description.present?
       content += "#{track.comment}" if track.comment.present?
+      content = replace_asterisk(content)
       contents << content.strip
       track.tweeted_at = Time.zone.now
       track.save!
@@ -62,5 +63,9 @@ namespace :twitter do
 
   def post_tweet(content)
     twitter_client.update(content)
+  end
+
+  def replace_asterisk(content)
+    content.gsub("*", "＊")
   end
 end
