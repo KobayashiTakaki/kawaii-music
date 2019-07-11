@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  rails:
+    build:
+      context: rails
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - "./rails:/var/rails"
+    working_dir: "/var/rails"
+    ports:
+      - "3080:3000"
+    command: >
+      /bin/bash -c "
+      bundle install --path vendor/bundle
+      && bundle exec rails s"
+
+  postgres:
+    image: postgres:11.4
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432"
+
+  redis:
+    image: redis:5.0-alpine
+    ports:
+      - "6379"
